@@ -1,0 +1,15 @@
+**/*.ipynb_checkpoints/
+.ipynb_checkpoints
+.directory
+__pycache__/
+**/__pycache__/
+*/__pycache__
+.vscode/settings.json
+**/.vscode/
+*-copy*
+*-Copy*
+*copy*
+*solved.ipynb*
+Labs/lab*/*.csv
+Labs/lab*/*.mat
+Labs/lab*/*.data
