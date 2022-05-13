@@ -1,4 +1,4 @@
-# Course information
+# Información del curso
 
 **2022 - Modelos y Simulación de Sistemas II**
 
