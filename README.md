@@ -1,6 +1,4 @@
-# Machine Learning 2020
-New version of my Machine Learning Introductory Course. This repo contains the course's technical material. It is to be used only by the course developers.
+# Modelos y Simulación de Sistemas II
+Este repositorio contiene el material de estudio tanto teórico como práctico del curso Modelos y Simulación de Sistemas II. 
 
 
-For full interactive content access
-https://jdariasl.github.io/ML_2020/intro.html
