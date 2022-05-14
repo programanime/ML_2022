@@ -1,0 +1,44 @@
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+class_names = iris.target_names
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+ X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+pipe = Pipeline([('scaler', StandardScaler()), ('svc', SVC())])
+
+ pipe.fit(X_train, y_train)
+
+# probar el modelo en entrenamiento
+accuracy_score(y_train, pipe.predict(X_train))
+
+
+plot_confusion_matrix(pipe, X_test, y_test,
+                                 display_labels=class_names,
+                                 cmap=plt.cm.Blues,
+                                 normalize="true")
+
+plot_confusion_matrix(pipe, X_test, y_test,
+                                 display_labels=class_names,
+                                 cmap=plt.cm.Blues)
+
+accuracy_score(y_test, pipe.predict(X_test))
+
+from joblib import dump, load
+dump(pipe, 'clasificador.joblib') 
+
+clf = load('clasificador.joblib')
+accuracy_score(y_test, clf.predict(X_test))

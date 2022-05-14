@@ -1,19 +1,16 @@
 # Book settings
 # template from https://github.com/executablebooks/github-action-demo
-title: 2021 Introducción al Machine Learning
-author: <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+title: 2022 Modelos y Simulación de Sistemas II
+author: Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia 
 logo: Images/fudea.jpg
 
 repository:
-   url: https://github.com/jdariasl/ML_2020
+   url: https://github.com/mariabda2/ML_2022
    branch: master
 
 launch_buttons:
   binderhub_url: ""
   colab_url: https://colab.research.google.com
-
-html:
-  google_analytics_id: "UA-51547737-2"
 
 execute:
   execute_notebooks         : off

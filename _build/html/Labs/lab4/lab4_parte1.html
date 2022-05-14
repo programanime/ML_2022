@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa &#8212; 2022 Modelos y Simulación de Sistemas II</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Laboratorio 4 - Parte 2. Regularización de modelos." href="lab4_parte2.html" />
+    <link rel="prev" title="U6. REDES NEURONALES ARTIFICIALES" href="../../titles/U6_description.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/fudea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">2022 Modelos y Simulación de Sistemas II</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar este libro ..." aria-label="Buscar este libro ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Información del curso
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Intro/Intro.html">
+   Introdución para los laboratorios de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U1_description.html">
+   U1. INTRODUCCIÓN AL MACHINE LEARNING
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab1/lab1_parte1.html">
+     Laboratorio 1 - Parte 1 Regresión polinomial múltiple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab1/lab1_parte2.html">
+     Laboratorio 1 - Parte 2. Regresión logística
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U2_description.html">
+   U2. MODELOS NO PARÁMETRICOS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab2/lab2_parte1.html">
+     Laboratorio 2 - Parte 1. KNN para un problema de clasificación
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab2/lab2_parte2.html">
+     Laboratorio 2 - Parte 2. KNN para un problema de regresión
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U4_description.html">
+   U4. APRENDIZAJE NO SUPERVISADO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab3/lab3_parte1.html">
+     Laboratorio 3 - Parte 1. Comparación de metodos de clusterización
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U5_description.html">
+   U5. MODELOS DE ÁRBOLES Y ENSAMBLES
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab3/lab3_parte2.html">
+     Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../titles/U6_description.html">
+   U6. REDES NEURONALES ARTIFICIALES
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lab4_parte2.html">
+     Laboratorio 4 - Parte 2. Regularización de modelos.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U7_description.html">
+   U7. MÁQUINAS DE VECTORES DE SOPORTE
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab5/lab5_parte1.html">
+     Laboratorio 5 - Parte 1. Redes recurrentes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab5/lab5_parte2.html">
+     Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U8_description.html">
+   U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab6/lab6_parte1.html">
+     Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab6/lab6_parte2.html">
+     Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U9_description.html">
+   A1. SESIONES EXTRA DE LABORATORIO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Extra/Basic_Preprocessing_FeatureEngineering.html">
+     Preprocesamiento e Ingeniería de características
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Extra/DespliegueModelos.html">
+     Despliegue de modelos en ambientes productivos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Navegación de palanca" aria-controls="site-navigation"
+                title="Navegación de palanca" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Descarga esta pagina"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Labs/lab4/lab4_parte1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Descargar archivo fuente" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Imprimir en PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Modo de pantalla completa"
+        title="Modo de pantalla completa"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/master/Labs/lab4/lab4_parte1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Lanzamiento Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contenido
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-experimentar-con-mlp-para-regresion">
+   Ejercicio 1 - Experimentar con MLP para regresión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion">
+   Ejercicio 2 Experimentar con MLP para clasificación
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contenido </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-experimentar-con-mlp-para-regresion">
+   Ejercicio 1 - Experimentar con MLP para regresión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion">
+   Ejercicio 2 Experimentar con MLP para clasificación
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras almacenar tu progreso</strong></p>
+<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#configuración del laboratorio</span>
+<span class="c1"># Ejecuta esta celda!</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="c1">#for local </span>
+<span class="c1">#import sys ; sys.path.append(&#39;../commons/utils/&#39;)</span>
+<span class="o">!</span>wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py --no-cache
+<span class="kn">from</span> <span class="nn">general</span> <span class="kn">import</span> <span class="n">configure_lab4</span>
+<span class="n">configure_lab4</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">lab4</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">GRADER</span> <span class="o">=</span> <span class="n">part_1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="laboratorio-4-parte-1-redes-neuronales-perceptron-multicapa">
+<h1>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa<a class="headerlink" href="#laboratorio-4-parte-1-redes-neuronales-perceptron-multicapa" title="Permalink to this headline">¶</a></h1>
+<p>Este ejercicio tiene como objetivo implementar una red neuronal artificial de tipo perceptrón multicapa (MLP) para resolver un problema de regresión. Usaremos la librería sklearn. Consulte todo lo relacionado con la definición de hiperparámetros, los métodos para el entrenamiento y la predicción de nuevas muestras en el siguiente enlace: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor">http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor</a></p>
+<p>Para este ejercicio usaremos la base de datos sobre calidad del aire, que ha sido usada en laboratorios previos, pero en este caso trataremos de predecir dos variables en lugar de una, es decir, abordaremos <strong>un problema de múltiples salidas</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#cargamos la bd que está en un archivo .data y ahora la podemos manejar de forma matricial</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;AirQuality.data&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Assuming tab-delimiter</span>
+
+<span class="c1">#Esta es la base de datos AirQuality del UCI Machine Learning Repository. En la siguiente URL se encuentra toda</span>
+<span class="c1">#la descripción de la base de datos y la contextualización del problema.</span>
+<span class="c1">#https://archive.ics.uci.edu/ml/datasets/Air+Quality#</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">db</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">db</span><span class="p">[:,</span><span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para calcular los errores, vamos a explorar y usar el <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">modulo de metricas den sklearn</a>.</p>
+<p>Podemos observar que el modulo tiene metricas para regresión y clasificación.</p>
+<div class="section" id="ejercicio-1-experimentar-con-mlp-para-regresion">
+<h2>Ejercicio 1 - Experimentar con MLP para regresión<a class="headerlink" href="#ejercicio-1-experimentar-con-mlp-para-regresion" title="Permalink to this headline">¶</a></h2>
+<p>Para porder implementar nuestra función, lo primero que debemos entender la estrucutra de la red.</p>
+<p>Como mencionamos, vamos a solucionar un problema de multiples salidas. Estas salidas con valores continuos. Por lo tanto debemos garantizar que la capa de salida de nuestra red tenga la capacidad de modelar este tipo de datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown ¿De acuerdo al problema planteado, que función de activación debe usar el MLP para un problema de regresión?</span>
+<span class="n">respuesta_1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una caracteristica de los modelos de sklearn, es que ciertos tipos de atributos, solo pueden ser accedidos cuanto se entrena el modelo. Vamos a realizar un pequeña función para comprobar cual es la capa de activación de los modelos MLP para regresión de sklearn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejercicio de código</span>
+<span class="k">def</span> <span class="nf">output_activation</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;funcion que entrena un modelo</span>
+<span class="sd">    con data aleatoria para confirmar la funcion</span>
+<span class="sd">    de activacion de la ultima capa</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">()</span>
+    <span class="c1"># fit with some random data</span>
+    <span class="n">xrandom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">yrandom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># llamar el metodo adecuado para entrenar</span>
+    <span class="c1"># el mlp con los x y &#39;y&#39; random</span>
+    <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(,</span> <span class="p">)</span>
+    <span class="c1"># retornar el atributo de mlp adecuado</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio1&quot;</span><span class="p">,</span> <span class="n">output_activation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;la función de activación para un problema de regresion es:&quot;</span><span class="p">,</span> <span class="n">output_activation</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una vez comprobado que sklearn usa la función de activación correcta, vamos crear la función para realizar los experimentos.</p>
+<p>Vamos completar la función con el código necesario para usar una red neuronal tipo MLP para solucionar el problema de regresión propuesto.</p>
+<ol class="simple">
+<li><p>Como función de activación en las capas ocultas use la función ‘tanh’.</p></li>
+<li><p>Ajuste el número máximo de épocas a 300.</p></li>
+<li><p>Dejamos como variables el número de capas ocultas y el número de neuronas por capa</p></li>
+<li><p>debemos seleccionar la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular el Error Porcentual Absoluto Medio (MAPE en sigla en ingles)</a>. Tener en cuenta que parametros usar.</p></li>
+<li><p>Debemos usar los nombres explicitos, por ejemplo si para el MLP es necesario usar el parametro <code class="docutils literal notranslate"><span class="pre">activation</span></code>, debe ser llamado: <code class="docutils literal notranslate"><span class="pre">MLPRegressor(activation=...)</span></code></p></li>
+<li><p>Explorar que hace la siguiente linea de codigo <code class="docutils literal notranslate"><span class="pre">tuple(2*[100])</span></code></p></li>
+</ol>
+<p><strong>NOTA</strong>: cuando observe el el parametro <code class="docutils literal notranslate"><span class="pre">random_state=1</span></code> por favor conservarlo, ya que esto hace que los resultados sean similares a lo largo de las ejecucciones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejercicio de código</span>
+
+<span class="k">def</span> <span class="nf">experimetar_mlp</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="p">,</span> <span class="n">num_neurons</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; función para realizar experimentos con el MLP</span>
+<span class="sd">    num_hidden_layers: list de enteros con el numero de capdas</span>
+<span class="sd">        ocultas a usar</span>
+<span class="sd">    num_neurons: list de enteros con el numero de neuronas a usar</span>
+<span class="sd">    X: matriz de numpy con caracteristicas</span>
+<span class="sd">    Y: vector numpy con las variables a predecir</span>
+<span class="sd">    </span>
+<span class="sd">    Retorna: dataframe con 6 columnas:</span>
+<span class="sd">        - numero de capas, numero de neuronas</span>
+<span class="sd">        - promedio de error prueba variable 1 y desviación estandar</span>
+<span class="sd">        - promedio de error prueba variable 2 y desviación estandar</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#Validamos el modelo</span>
+    <span class="n">Folds</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">Folds</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">resultados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">hidden_layers</span> <span class="ow">in</span> <span class="n">num_hidden_layers</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">neurons</span> <span class="ow">in</span> <span class="n">num_neurons</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+                <span class="c1"># para almacenar errores intermedios</span>
+                <span class="n">ErrorY1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Folds</span><span class="p">)</span>
+                <span class="n">ErrorY2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Folds</span><span class="p">)</span>
+                <span class="n">Xtrain</span><span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">,:]</span>
+                <span class="n">Ytrain</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">train</span><span class="p">,:]</span>
+                <span class="n">Xtest</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">,:]</span>
+                <span class="n">Ytest</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">,:]</span>
+                <span class="c1">#Normalizamos los datos</span>
+                <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span> <span class="n">Xtrain</span><span class="p">)</span>       
+                <span class="n">Xtrain</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
+                <span class="n">Xtest</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+                <span class="c1">#Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento</span>
+                <span class="c1"># prestar atención a los parametros, correctos.</span>
+                <span class="n">hidden_layer_sizes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
+                <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span> <span class="n">hidden_layer_sizes</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mf">1.</span><span class="o">..</span><span class="p">)</span>
+                <span class="c1"># entrena el MLP</span>
+                <span class="n">mlp</span>
+                <span class="c1"># Use para el modelo para hacer predicciones sobre el conjunto Xtest</span>
+                <span class="n">Yest</span> <span class="o">=</span> <span class="n">mlp</span>
+                <span class="c1"># Mida el MAPE para cada una de las dos salidas</span>
+                <span class="c1"># Observe bien la documentación. recordar que esta resolviendo</span>
+                <span class="c1"># un problema de multiples salidas</span>
+                <span class="n">errors</span> <span class="o">=</span> <span class="p">(</span><span class="n">Ytest</span><span class="p">,</span> <span class="n">Yest</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+                <span class="n">ErrorY1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span>
+                <span class="n">ErrorY2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=...</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error para salida 1 = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ErrorY1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ErrorY1</span><span class="p">)))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error para salida 2 = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ErrorY2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ErrorY2</span><span class="p">)))</span>
+        
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;capas ocultas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hidden_layers</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;neuronas en capas ocultas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neurons</span> 
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;error de prueba y1(media)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ErrorY1</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;intervalo de confianza y1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ErrorY1</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;error de prueba y2(media)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ErrorY2</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;intervalo de confianza y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ErrorY2</span><span class="p">)</span>
+            <span class="n">idx</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
+<span class="c1"># ignorar los prints</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio2&quot;</span><span class="p">,</span> <span class="n">experimetar_mlp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>vamos a realizar los experimentos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tarda unos minutos!!</span>
+<span class="n">resultados_mlpr</span> <span class="o">=</span> <span class="n">experimetar_mlp</span><span class="p">(</span><span class="n">num_hidden_layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">num_neurons</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span> <span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ver los resultados.</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resultados_mlpr</span><span class="p">,</span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;neuronas en capas ocultas&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;error de prueba y1(media)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span> <span class="s1">&#39;capas ocultas&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;line&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resultados_mlpr</span><span class="p">,</span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;neuronas en capas ocultas&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;error de prueba y2(media)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span> <span class="s1">&#39;capas ocultas&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;line&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown con base a los reusltados, ¿podriamos saber a priori los mejores parametros (capas ocultas, # de neuronas), que tan correcto es asumir patrones en los valores de los parametros?</span>
+<span class="n">respuesta_2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown qué ocurre si cambiamos el valor de random state? los resultados deberían ser iguales? justifique su respuesta usando los conceptos teóricos.</span>
+<span class="n">respuesta_3</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2-experimentar-con-mlp-para-clasificacion">
+<h2>Ejercicio 2 Experimentar con MLP para clasificación<a class="headerlink" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion" title="Permalink to this headline">¶</a></h2>
+<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano. Usaremos únicamente 4 de las 10 clases disponibles. Los datos fueron preprocesados para reducir el número de características. La técnica usada será analizada más adelante en el curso.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="n">load_digits</span><span class="p">(</span><span class="n">n_class</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1">#--------- preprocesamiento--------------------</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="c1">#---------- Datos a usar ----------------------</span>
+<span class="n">Xd</span> <span class="o">=</span> <span class="n">data</span>
+<span class="n">Yd</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown  ¿Qué tipo de función de activación usa el modelo en la capa de salida para un problema de clasificación?</span>
+<span class="n">respuesta_4</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>como lo hicmos antes, vamos a comprobar con la libreria la función de activación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejercicio de código</span>
+<span class="k">def</span> <span class="nf">output_activation_MPC</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;funcion que entrena un modelo</span>
+<span class="sd">    con data aleatoria para confirmar la funcion</span>
+<span class="sd">    de activacion de la ultima capa</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">()</span>
+    <span class="c1"># fit with some random data</span>
+    <span class="n">xrandom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">yrandom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># llamar el metodo adecuado para entrenar</span>
+    <span class="c1"># el mlp con los x y &#39;y&#39; random</span>
+    <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(,</span> <span class="p">)</span>
+    <span class="c1"># retornar el atributo de mlp adecuado</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mlp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio3&quot;</span><span class="p">,</span> <span class="n">output_activation_MPC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;la función de activación para un problema de clasificación es:&quot;</span><span class="p">,</span> <span class="n">output_activation_MPC</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora en nuestro siguiente ejercicio vamos a implementar una red neuronal artificial de tipo perceptrón multicapa (MLP) para resolver un problema de clasificación. Usaremos la librería sklearn. Consulte todo lo relacionado con la definición de hiperparámetros, los métodos para el entrenamiento y la predicción de nuevas muestras en el siguiente enlace: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier">http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier</a></p>
+<p>Vamos completar la función con el código necesario para usar una red neuronal tipo MLP para solucionar el problema de clasificación propuesto.</p>
+<ol class="simple">
+<li><p>Como función de activación en las capas ocultas use la función tangencial hiperbólica.</p></li>
+<li><p>Ajuste el número máximo de épocas a 350.</p></li>
+<li><p>Dejamos como variables el número de capas ocultas y el número de neuronas por capa</p></li>
+<li><p>Seleccione la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular la exactitud del clasificador</a>. Tener en cuenta que parametros usar.</p></li>
+<li><p>Debemos usar los nombres explicitos, por ejemplo si para el MLP es necesario usar el parametro <code class="docutils literal notranslate"><span class="pre">activation</span></code>, debe ser llamado: <code class="docutils literal notranslate"><span class="pre">MLPClassifier(activation=...)</span></code></p></li>
+</ol>
+<p><strong>NOTA</strong>: cuando observe el el parametro <code class="docutils literal notranslate"><span class="pre">random_state=1</span></code> por favor conservarlo, ya que esto hace que los resultados sean similares a lo largo de las ejecucciones. *tener en cuenta esta observación para una de las preguntas abiertas que encuentras mas adelante del laboratorio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejercicio de código</span>
+<span class="k">def</span> <span class="nf">experimetar_mlpc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span> <span class="n">num_hidden_layers</span><span class="p">,</span> <span class="n">num_neurons</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; función para realizar experimentos con el MLP</span>
+<span class="sd">    x: matriz de numpy con caracteristicas</span>
+<span class="sd">    y: vector numpy con las variables a predecir</span>
+<span class="sd">    num_hidden_layers: list de enteros con el numero de capdas</span>
+<span class="sd">        ocultas a usar</span>
+<span class="sd">    num_neurons: list de enteros con el numero de neuronas a usar</span>
+<span class="sd">    </span>
+<span class="sd">    Retorna: dataframe con 4 columnas:</span>
+<span class="sd">        - numero de capas, numero de neuronas</span>
+<span class="sd">        - promedio de error prueba (exactitud/eficiencia) de claisficacion y desviación estandar        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#Validamos el modelo</span>
+    <span class="n">Folds</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">Folds</span><span class="p">)</span> 
+    <span class="n">resultados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">hidden_layers</span> <span class="ow">in</span> <span class="n">num_hidden_layers</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">neurons</span> <span class="ow">in</span> <span class="n">num_neurons</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)):</span>
+                <span class="c1"># para almacenar errores intermedios</span>
+                <span class="n">Error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Folds</span><span class="p">)</span>
+                <span class="n">Xtrain</span><span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">,:]</span>
+                <span class="n">Ytrain</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">train</span><span class="p">]</span>
+                <span class="n">Xtest</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="n">Ytest</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
+                <span class="c1">#Normalizamos los datos</span>
+                <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span> <span class="n">Xtrain</span><span class="p">)</span>       
+                <span class="n">Xtrain</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
+                <span class="n">Xtest</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+                <span class="c1">#Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento</span>
+                <span class="c1"># prestar atención a los parametros, correctos.</span>
+                <span class="n">hidden_layer_sizes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+                <span class="c1">#print(hidden_layer_sizes)</span>
+                <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span> <span class="o">=</span> <span class="n">hidden_layer_sizes</span><span class="p">,</span> <span class="o">...</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="c1"># entrenar el MLP</span>
+                <span class="n">mlp</span><span class="o">...</span>
+                <span class="c1">#Use para el modelo para hacer predicciones sobre el conjunto Xtest</span>
+                <span class="n">Yest</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span>
+                <span class="c1"># recordar usar la medida adecuada de acuerdo a las instrucciones</span>
+                <span class="n">Error</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="n">Ytest</span><span class="p">,</span> <span class="n">Yest</span><span class="p">)</span>
+        
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error para configuracion de params = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Error</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Error</span><span class="p">)))</span>
+        
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;capas ocultas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hidden_layers</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;neuronas en capas ocultas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neurons</span> 
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;error de prueba(media)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Error</span><span class="p">)</span>
+            <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="s1">&#39;intervalo de confianza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Error</span><span class="p">)</span>
+            <span class="n">idx</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">resultados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## la funcion que prueba tu implementacion</span>
+<span class="n">GRADER</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="s2">&quot;ejercicio4&quot;</span><span class="p">,</span> <span class="n">experimetar_mlpc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tarda unos minutos!!</span>
+<span class="n">resultados_mlpc</span> <span class="o">=</span> <span class="n">experimetar_mlpc</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">Xd</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">Yd</span><span class="p">,</span> <span class="n">num_hidden_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">num_neurons</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ver los resultados</span>
+<span class="c1"># notar como las capas ocultas y el # de neuronas influyen</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resultados_mlpc</span><span class="p">,</span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;neuronas en capas ocultas&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;exactitud en prueba(media)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span> <span class="s1">&#39;capas ocultas&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;line&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown ¿Cuántas neuronas en la capa de salida tiene el modelo? ¿Porqué debe tener ese número?</span>
+<span class="n">respuesta_5</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Pregunta Abierta</span>
+<span class="c1">#@markdown Llegas a una nueva compañía. Solo tienen perceptrones multicapa entrenados usado sklearn ¿que recomiendas?</span>
+<span class="n">respuesta_6</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>recordatorio</strong> En la practica sklearn no es una la libreria indicada para desarollar redes neuronales, para practicas mas avanzadas y realizar modelos en el “mundo real” <a class="reference external" href="https://colab.research.google.com/github/lexfridman/mit-deep-learning/blob/master/tutorial_deep_learning_basics/deep_learning_basics.ipynb">se deben usar conceptos de deep learning y una libreria llamada Keras</a>. Adicional tener en cuenta <a class="reference external" href="https://jdariasl.github.io/ML_2020/Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html#desventajas-de-las-aproximaciones-clasicas">lo visto en teoria</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GRADER</span><span class="o">.</span><span class="n">check_tests</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Integrantes</span>
+<span class="n">codigo_integrante_1</span> <span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<span class="n">codigo_integrante_2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1">#@param {type:&quot;string&quot;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>esta linea de codigo va fallar, es de uso exclusivo de los profesores</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GRADER</span><span class="o">.</span><span class="n">grade</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Labs\lab4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../../titles/U6_description.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">U6. REDES NEURONALES ARTIFICIALES</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab4_parte2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Laboratorio 4 - Parte 2. Regularización de modelos.</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Por Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
+    
+        &copy; Derechos de autor 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

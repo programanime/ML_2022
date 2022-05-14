@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Despliegue de modelos en ambientes productivos &#8212; 2022 Modelos y Simulación de Sistemas II</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Preprocesamiento e Ingeniería de características" href="Basic_Preprocessing_FeatureEngineering.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/fudea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">2022 Modelos y Simulación de Sistemas II</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Buscar este libro ..." aria-label="Buscar este libro ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Información del curso
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Intro/Intro.html">
+   Introdución para los laboratorios de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U1_description.html">
+   U1. INTRODUCCIÓN AL MACHINE LEARNING
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab1/lab1_parte1.html">
+     Laboratorio 1 - Parte 1 Regresión polinomial múltiple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab1/lab1_parte2.html">
+     Laboratorio 1 - Parte 2. Regresión logística
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U2_description.html">
+   U2. MODELOS NO PARÁMETRICOS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab2/lab2_parte1.html">
+     Laboratorio 2 - Parte 1. KNN para un problema de clasificación
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab2/lab2_parte2.html">
+     Laboratorio 2 - Parte 2. KNN para un problema de regresión
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U4_description.html">
+   U4. APRENDIZAJE NO SUPERVISADO
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab3/lab3_parte1.html">
+     Laboratorio 3 - Parte 1. Comparación de metodos de clusterización
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U5_description.html">
+   U5. MODELOS DE ÁRBOLES Y ENSAMBLES
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab3/lab3_parte2.html">
+     Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U6_description.html">
+   U6. REDES NEURONALES ARTIFICIALES
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab4/lab4_parte1.html">
+     Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab4/lab4_parte2.html">
+     Laboratorio 4 - Parte 2. Regularización de modelos.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U7_description.html">
+   U7. MÁQUINAS DE VECTORES DE SOPORTE
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab5/lab5_parte1.html">
+     Laboratorio 5 - Parte 1. Redes recurrentes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab5/lab5_parte2.html">
+     Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../titles/U8_description.html">
+   U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab6/lab6_parte1.html">
+     Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lab6/lab6_parte2.html">
+     Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../titles/U9_description.html">
+   A1. SESIONES EXTRA DE LABORATORIO
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Basic_Preprocessing_FeatureEngineering.html">
+     Preprocesamiento e Ingeniería de características
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Despliegue de modelos en ambientes productivos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Navegación de palanca" aria-controls="site-navigation"
+                title="Navegación de palanca" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Descarga esta pagina"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Labs/Extra/DespliegueModelos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Descargar archivo fuente" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Imprimir en PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Modo de pantalla completa"
+        title="Modo de pantalla completa"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/mariabda2/ML_2022/blob/master/Labs/Extra/DespliegueModelos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Lanzamiento Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contenido
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#los-roles-de-la-ciencia-de-datos">
+   Los roles de la ciencia de Datos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-despliegue">
+   Tipos de Despliegue
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-o-por-lotes">
+     Batch o por lotes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tiempo-real-usando-feature-lookup">
+     Tiempo real usando Feature Lookup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tiempo-real">
+     Tiempo real
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrenamiento-del-modelo">
+   Entrenamiento del modelo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-factorizacion">
+   Re-factorización
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rerencias-y-enlaces-de-interes">
+   Rerencias y enlaces de interes
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Despliegue de modelos en ambientes productivos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contenido </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#los-roles-de-la-ciencia-de-datos">
+   Los roles de la ciencia de Datos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-despliegue">
+   Tipos de Despliegue
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#batch-o-por-lotes">
+     Batch o por lotes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tiempo-real-usando-feature-lookup">
+     Tiempo real usando Feature Lookup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tiempo-real">
+     Tiempo real
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrenamiento-del-modelo">
+   Entrenamiento del modelo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#re-factorizacion">
+   Re-factorización
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rerencias-y-enlaces-de-interes">
+   Rerencias y enlaces de interes
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="despliegue-de-modelos-en-ambientes-productivos">
+<h1>Despliegue de modelos en ambientes productivos<a class="headerlink" href="#despliegue-de-modelos-en-ambientes-productivos" title="Permalink to this headline">¶</a></h1>
+<p>Recordar los pasos que habíamos visto en los estándares introducidos en <a class="reference internal" href="Basic_Preprocessing_FeatureEngineering.html"><span class="doc std std-doc">nuestra sesión</span></a>:</p>
+<ol class="simple">
+<li><p>Entender problema y el objetivo</p></li>
+<li><p>Obtener y Entender los datos (análisis exploratorio– en algunas prácticas hemos iniciado con estas técnicas)</p></li>
+<li><p>Modelar: incluyendo las transformaciones/ limpieza/ ingeniería de características de los datos y el modelo de ML (entrenamiento, validación, experimentos – lo que hemos estado haciendo en las practicas)</p></li>
+<li><p><strong>Despliegue del Modelo</strong></p></li>
+</ol>
+<div class="section" id="los-roles-de-la-ciencia-de-datos">
+<h2>Los roles de la ciencia de Datos<a class="headerlink" href="#los-roles-de-la-ciencia-de-datos" title="Permalink to this headline">¶</a></h2>
+<p>A la hora de hablar de despliegue de modelos, nos encontramos con una discusión de roles que muchas veces se superponen. Esta superposición Se ve influenciada por diversos factores externos, como el tamaño de la compañía, el equipo y contexto particular.</p>
+<img src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/Extra/UDEA_DS_ML.jpg" alt="drawing" width="800"/>
+</div>
+<div class="section" id="tipos-de-despliegue">
+<h2>Tipos de Despliegue<a class="headerlink" href="#tipos-de-despliegue" title="Permalink to this headline">¶</a></h2>
+<p>En la practica hay varios escenarios para realizar la puesta en marcha de los modelos. Como es usual depende del contexto y necesidades particulares.</p>
+<div class="section" id="batch-o-por-lotes">
+<h3>Batch o por lotes<a class="headerlink" href="#batch-o-por-lotes" title="Permalink to this headline">¶</a></h3>
+<img src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/Extra/batch.jpg" alt="drawing" width="800"/>
+<p><strong>Ejemplo</strong></p>
+<p>Cada Trimestre una compañía de crédito, actualiza la información de sus usuarios, con esa información en la compañía predice la capacidad de pago de sus clientes. Esa predicción es almacenada y es consumida por diferentes aplicaciones y sistemas de la compañía.</p>
+</div>
+<div class="section" id="tiempo-real-usando-feature-lookup">
+<h3>Tiempo real usando Feature Lookup<a class="headerlink" href="#tiempo-real-usando-feature-lookup" title="Permalink to this headline">¶</a></h3>
+<img src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/Extra/feature_lookup.jpg" alt="drawing" width="800"/>
+<p><strong>Ejemplo</strong></p>
+<p>Una compañía de pagos creo un modelo de predicción de fraude.
+El modelo necesita 100 Variables.
+Las 100 Variables requieren de agregaciones a nivel de usuario y otros factores.</p>
+<p>En este caso el servicio que consume el modelo de predicción de fraude solo envía unos identificadores clave como el usuario y la tarjeta.</p>
+<p>El modelo recibe esa información y realizar la consulta a una base de datos de cache para derivar las características. Luego de obtener las características, aplica el modelo y responde con la probabilidad de fraude.</p>
+</div>
+<div class="section" id="tiempo-real">
+<h3>Tiempo real<a class="headerlink" href="#tiempo-real" title="Permalink to this headline">¶</a></h3>
+<img src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/Extra/realtime.jpg" alt="drawing" width="800"/>
+<p><strong>Ejemplo</strong></p>
+<p><a class="reference external" href="https://azure.microsoft.com/es-es/services/cognitive-services/computer-vision/#features">Azure Vision</a></p>
+</div>
+</div>
+<div class="section" id="entrenamiento-del-modelo">
+<h2>Entrenamiento del modelo<a class="headerlink" href="#entrenamiento-del-modelo" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sklearn maneja un concepto par apoder agrupar todos los pasos de procesamiento y entrenamiento del modelo.</p>
+<img src="https://iaml.it/blog/optimizing-sklearn-pipelines/images/pipeline-diagram.png" alt="drawing" width="800"/>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;svc&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">())])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># probar el modelo en entrenamiento</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+                                 <span class="n">display_labels</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span>
+                                 <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+                                 <span class="n">display_labels</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora con el modelo entrenado, persistimos el modelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+<span class="n">dump</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="s1">&#39;clasificador.joblib&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Importante asegurarse de la version de scikit learn</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip show scikit-learn
+</pre></div>
+</div>
+</div>
+<div class="section" id="re-factorizacion">
+<h2>Re-factorización<a class="headerlink" href="#re-factorizacion" title="Permalink to this headline">¶</a></h2>
+<p>Con el modelo ya guardado procedemos a refactorizar el proceso para poder usarlo en un servicio web. Primero probamos que podemos cargar de manera correcta el modelo y usarlo nuevamente si necesidad de entrenarlo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;clasificador.joblib&#39;</span><span class="p">)</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para crear el servicio web, las librerias más usadas son las siguientes:</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a></p></li>
+<li><p><a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a></p></li>
+</ol>
+<p>En este sesión vamos a ver como usar Flask conjunto a otras herramientas que tienen un poco mas de profundidad.</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.heroku.com/">https://www.heroku.com/</a> : plataforma usada para publicar servicios web.</p></li>
+<li><p><a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> : para gestionar el versionamiento</p></li>
+<li><p><a class="reference external" href="https://gunicorn.org/">https://gunicorn.org/</a> : Servidor HTTP</p></li>
+</ol>
+<p>¡Comencemos!</p>
+<ol class="simple">
+<li><p>Crear un cuenta en heroku: <a class="reference external" href="https://www.heroku.com/">https://www.heroku.com/</a>. Es gratis, requiere un correo. Se recibe un correo en donde se debe confirmar la cuenta y crear la contraseña.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Instalar Heroku Cli : <a class="reference external" href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">https://devcenter.heroku.com/articles/heroku-cli#download-and-install</a></p></li>
+<li><p>Instalar Git: <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p></li>
+</ol>
+<ol class="simple">
+<li><p>Hacer login con heroku</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heroku</span> <span class="n">login</span> <span class="o">-</span><span class="n">i</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Crear una aplicación en Heroku: <a class="reference external" href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a></p></li>
+</ol>
+<ol class="simple">
+<li><p>Crear la estructura de archivos como se muestra en esta carpeta del repositorio <a class="reference external" href="https://github.com/jdariasl/ML_2020/tree/master/Labs/Extra/despliegue_modelos">https://github.com/jdariasl/ML_2020/tree/master/Labs/Extra/despliegue_modelos</a></p></li>
+</ol>
+<p>Vamos entender el contenido de estos archivos:</p>
+<ul class="simple">
+<li><p>Templates: carpeta con los archivos HTML base para la aplicación</p></li>
+<li><p>Procfile: Archivo para la configuración de Gunicorn</p></li>
+<li><p><a class="reference external" href="http://app.py">app.py</a>: script con el codigo refactorizado para usar el modelo entrenado para realizar predicciones</p></li>
+<li><p>requirements.txt: archivo especificando las dependencias</p></li>
+</ul>
+<ol class="simple">
+<li><p>Descargar el modelo entrenado, y ponerlo en la misma estructura de carpeta a nivel del archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code>. Si hay lugar modificar el nombre del archivo en <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Inicializar el repositorio git, dentro de la carpeta, <strong>reemplazar con el nombre de la aplicación creada en el paso 4</strong>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">init</span>
+
+<span class="c1"># reemplazar con el nombre de la aplicación creada</span>
+<span class="n">heroku</span> <span class="n">git</span><span class="p">:</span><span class="n">remote</span> <span class="o">-</span><span class="n">a</span> <span class="n">test</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">prd</span>
+
+<span class="c1"># espeficar a heroku que se usa python</span>
+
+<span class="n">heroku</span> <span class="n">buildpacks</span><span class="p">:</span><span class="nb">set</span> <span class="n">heroku</span><span class="o">/</span><span class="n">python</span>
+
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Publicar la aplicación: Adicionar los archivos, confirmar que vamos realizar el cambio y finalmente desplegarlos a la nube</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;deploying the model&quot;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">heroku</span> <span class="n">master</span><span class="p">:</span><span class="n">main</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rerencias-y-enlaces-de-interes">
+<h2>Rerencias y enlaces de interes<a class="headerlink" href="#rerencias-y-enlaces-de-interes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/model_persistence.html">https://scikit-learn.org/stable/modules/model_persistence.html</a></p>
+<p><a class="reference external" href="https://www.snowflake.com/trending/machine-learning-engineer-vs-data-scientist">https://www.snowflake.com/trending/machine-learning-engineer-vs-data-scientist</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Labs\Extra"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Basic_Preprocessing_FeatureEngineering.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preprocesamiento e Ingeniería de características</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Por Maria Bernarda Salazar Sánchez -- Laboratorio por Germán E. Melo  -  Universidad de Antioquia<br/>
+    
+        &copy; Derechos de autor 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
