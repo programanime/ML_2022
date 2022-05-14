@@ -7,8 +7,9 @@
 ## Programa y Calendario
 
 **Calendario**
+La programación de los temas abordados en clase, las fechas de actividades evaluativas y entregas de trabajos, así como las sesiones de laboratorio podrán ser consultadas en el siguiente archivo: [GoogleSheets](https://docs.google.com/spreadsheets/d/13pfT3HsrImulcnZlNgpN26-ZuuK09jir/edit?usp=sharing&ouid=110575995635559804008&rtpof=true&sd=true)
 
-## Evaluación
+## Distribución de porcentajes de evaluación
 
 - Laboratorios 30%
 - Exámenes teóricos 50%
