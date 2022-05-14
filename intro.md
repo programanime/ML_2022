@@ -1,12 +1,16 @@
 # Información del curso
 
 **2022 - Modelos y Simulación de Sistemas II**
+Desarrollar competencias básicas para observar, explicar, modelar, validar y simular sistemas reales, en el contexto de la ingeniería de sistemas, empleando herramientas computacionales de aprendizaje automático y considerando las implicaciones éticas presentes en el desarrollo individual y social.
+La teoría de sistemas ofrece un marco conceptual y un formalismo matemático para reconocer tanto el papel de las partes y el entorno de un objeto, como el de las interrelaciones entre ellos. De manera similar, la ciencia computacional utiliza el modelado matemático y la simulación para analizar problemas complejos del mundo real y para hacer pronósticos.
 
+El área de ciencia e ingeniería computacionales del Departamento de Ingeniería de Sistemas de la Universidad de Antioquia, propone que tanto la teoría, como los modelos y la utilización o desarrollo de herramientas para simulación, se conviertan en métodos útiles para explicar e interpretar la evidencia empírica que abunda en las organizaciones, mejorar las habilidades de describir matemáticamente los problemas, pronosticar el comportamiento de los sistemas modelados, tomar mejores decisiones y sugerir alternativas de solución en el entorno profesional del estudiante.
 
 
 ## Programa y Calendario
 
 **Calendario**
+
 La programación de los temas abordados en clase, las fechas de actividades evaluativas y entregas de trabajos, así como las sesiones de laboratorio podrán ser consultadas en el siguiente archivo: [GoogleSheets](https://docs.google.com/spreadsheets/d/13pfT3HsrImulcnZlNgpN26-ZuuK09jir/edit?usp=sharing&ouid=110575995635559804008&rtpof=true&sd=true)
 
 ## Distribución de porcentajes de evaluación
