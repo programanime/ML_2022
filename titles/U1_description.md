@@ -1,6 +1,6 @@
-# U1. INTRODUCCIÓN AL MACHINE LEARNING
+# INTRODUCCIÓN AL MACHINE LEARNING
 
-## ¿Qué es Machine Learning?
+## ¿Qué es Machine Learning?  <br/>
 
 **01 - Definiciones básicas y aplicaciones típicas**:   <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
@@ -13,7 +13,7 @@
 **05 - Componentes de un modelo de ML**: <br/> Se explican los tres componentes básicos que deben considerarse cuando se selecciona un modelo de ML y los diferentes niveles de abstracción en los que se puede aproximar una solución.
 
 
-## Modelos básicos de aprendizaje
+## Modelos básicos de aprendizaje  <br/>
 
 **06 - Regresión múltiple**: <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
@@ -25,7 +25,7 @@
 
 **10 - Fronteras no lineales con regresión logística**:  <br/> Se discute cómo se pueden obtener fronteras de decisión no lineales usando el modelo de regresión logística y los ajustes que deben realizarse para su implementación.
 
-## Modelos discriminativos vs modelos generativos
+## Modelos discriminativos vs modelos generativos   <br/>
 
 **11 - Funciones discriminantes Gausianas**: <br/> Se discuten los modelos generativos los cuales utilizan un principio de funcionamiento diferente para resolver los problemas de clasificación y se presenta el modelo de funcionaes discriminantes Gausianas, además se explica el criterio de Máxima Verosimilitud a partir del cual se estiman los parámetros del modelo.
 

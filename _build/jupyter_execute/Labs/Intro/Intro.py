@@ -16,7 +16,7 @@ configure_intro()
 from intro import *
 
 
-# # Introdución para los laboratorios de Machine Learning
+# # INTRODUCCIÓN AL LABORATORIO
 # 
 # Este sección explica los laboratorios que realizarán durante el curso. 
 # 1. Los laboratorios están en Python 3.7

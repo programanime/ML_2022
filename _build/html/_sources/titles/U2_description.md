@@ -1,6 +1,6 @@
-# U2. MODELOS NO PARÁMETRICOS
+# MODELOS NO PARÁMETRICOS
 
-## Modelos paramétricos vs no paramétricos
+## Modelos paramétricos vs no paramétricos <br/> 
 
 **13 - Diferencias entre modelos paramétricos y no paramétricos**: <br/> Se introduce la clasificación de modelos entre paramétricos y no paramétricos, sus principios de fucionamiento y algunas claves para identificar a qué grupo pertenece un modelo a partir de su definición.
 
