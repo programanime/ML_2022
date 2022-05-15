@@ -1,5 +1,5 @@
-# INFORMACIÓN DEL CURSO <br/> 
-### Modelos y Simulación de Sistemas II 
+# INFORMACIÓN DEL CURSO 
+### Modelos y Simulación de Sistemas II <br/> 
 
 **Descripción general:** Desarrollar competencias básicas para observar, explicar, modelar, validar y simular sistemas reales, en el contexto de la ingeniería de sistemas, empleando herramientas computacionales de aprendizaje automático y considerando las implicaciones éticas presentes en el desarrollo individual y social.
 La teoría de sistemas ofrece un marco conceptual y un formalismo matemático para reconocer tanto el papel de las partes y el entorno de un objeto, como el de las interrelaciones entre ellos. De manera similar, la ciencia computacional utiliza el modelado matemático y la simulación para analizar problemas complejos del mundo real y para hacer pronósticos.

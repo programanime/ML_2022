@@ -1,4 +1,4 @@
-# U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN
+# COMPLEJIDAD DE MODELOS Y VALIDACIÓN
 
 ## Métricas de evaluación para clasificación
 
