@@ -8,7 +8,7 @@ El área de ciencia e ingeniería computacionales del Departamento de Ingenierí
 
 ## Programa y Calendario
 
-La programación de los temas abordados en clase, las fechas de actividades evaluativas y entregas de trabajos, así como las sesiones de laboratorio podrán ser consultadas en el siguiente archivo: [GoogleSheets](https://docs.google.com/spreadsheets/d/13pfT3HsrImulcnZlNgpN26-ZuuK09jir/edit?usp=sharing&ouid=110575995635559804008&rtpof=true&sd=true)
+La programación de los temas abordados en clase, las fechas de actividades evaluativas y entregas de trabajos, así como las sesiones de laboratorio podrán ser consultadas en el siguiente archivo: [GoogleSheets](https://docs.google.com/spreadsheets/d/1DEsjrTqnMk2lOAWap_QBu_QaRz2tK5YoeWdyFYAnxbs/edit?usp=sharing)
 
 ## Distribución de porcentajes de evaluación
 
@@ -25,7 +25,7 @@ Para los proyectos se debe seleccionar un problema de **aprendizaje supervisado*
 
 Se realiza una avance parcial del proyecto que incluye partes I y II de la guía, y la entrega final con el desarrollo completo.
 
-La guía para la realización del proyecto puede ser consultada en: [guia_proyecto.pdf](https://github.com/mariabda2/ML_2022/tree/master/local/imgs/GuiaProyecto.pdf)
+La guía para la realización del proyecto puede ser consultada en: [guia_proyecto.pdf]()
 
 Una vez comience el semestre se compartirán algunos archivos que contienen algunos datasets que no pueden ser seleccionados debido a problemas con la información o a que el alcance del reto no es suficiente como proyecto del curso.
 
@@ -33,8 +33,8 @@ Una vez comience el semestre se compartirán algunos archivos que contienen algu
 
 ## Sesiones de laboratorio
 
-- Sesiones sincrónicas en el aula virtual: [zoom link](https://udea.zoom.us/j/92740055099)
-- Las grabaciones de dichas sesiones pueden encontrarlas en: [zoom recordings](http://ingeniaudea.edu.co/zoom-recordings/recordings/docenciaingenia68@udea.edu.co/92740055099/2021-02-28)
+- Sesiones sincrónicas en el aula virtual: [zoom link]()
+- Las grabaciones de dichas sesiones pueden encontrarlas en: [zoom recordings]()
 
 
 ## Lecturas recomendadas

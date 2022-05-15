@@ -13,14 +13,14 @@
 
 ## Métricas de evaluación para regresión
 
-**20 - Medidas de error para problemas de regresión**: <br/> Se introducen las principales medidas de error para problemas de regresión y se discuten sus ventajas y desventajas.
+**Medidas de error para problemas de regresión**: <br/> Se introducen las principales medidas de error para problemas de regresión y se discuten sus ventajas y desventajas.
 
 
 ## Complejidad de datos y complejidad de modelos
 
-**21 - Complejidad de modelos y tamaño de muestra**:  <br/> Se analiza la complejidad de los modelos en términos de las funciones que pueden reconstruir y el efecto que tiene la cantidad de muestras en la complejidad del modelo resultante.
+**Complejidad de modelos y tamaño de muestra**:  <br/> Se analiza la complejidad de los modelos en términos de las funciones que pueden reconstruir y el efecto que tiene la cantidad de muestras en la complejidad del modelo resultante.
 
-**22 - Sesgo vs Varianza**:  <br/> Se introducen los conceptos de error por sesgo y varianza y su relación con los fenómenos de sobreajuste y subajuste.
+**Sesgo vs Varianza**:  <br/> Se introducen los conceptos de error por sesgo y varianza y su relación con los fenómenos de sobreajuste y subajuste.
 
 
 ## Metodologías de validación
