@@ -33,8 +33,8 @@ Una vez comience el semestre se compartirán algunos archivos que contienen algu
 
 ## Sesiones de laboratorio
 
-- Sesiones sincrónicas en el aula virtual: [zoom link]()
-- Las grabaciones de dichas sesiones pueden encontrarlas en: [zoom recordings]()
+- Sesiones sincrónicas en el aula virtual: [zoom link](https://udea.zoom.us/j/95424422673)
+- Las grabaciones de dichas sesiones pueden encontrarlas en: [zoom recordings](http://ingeniaudea.edu.co/zoom-recordings/recordings/docenciaingenia12@udea.edu.co/95424422673/2021-02-28)
 
 
 ## Lecturas recomendadas
