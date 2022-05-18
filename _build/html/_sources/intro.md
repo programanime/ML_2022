@@ -29,7 +29,7 @@ La guía para la realización del proyecto puede ser consultada en: [guia_proyec
 
 Una vez comience el semestre se compartirán algunos archivos que contienen algunos datasets que no pueden ser seleccionados debido a problemas con la información o a que el alcance del reto no es suficiente como proyecto del curso.
 
-- [Registro de grupos]() (solo un registro por grupo)
+- [Registro de grupos](https://forms.gle/Gt25aoJL8T3qVE3x6) (solo un registro por grupo)
 
 ## Sesiones de laboratorio
 
