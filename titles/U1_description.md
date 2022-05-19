@@ -2,7 +2,7 @@
 
 ## ¿Qué es Machine Learning?  <br/>
 
-**Definiciones básicas y aplicaciones típicas**:   <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
+**Definiciones básicas y aplicaciones típicas**:  [pdf](https://drive.google.com/file/d/1k8XDXGFka_LWfty32M8BcOT7rFtbpRkS/view?usp=sharing) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
 **Modelos controlados por datos**:   <br/>Se discuten los conceptos básicos de los modelos controaldos por datos que rigen a todos los modelos de ML.
 
