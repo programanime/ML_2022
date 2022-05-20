@@ -1,5 +1,4 @@
 course_id = 'ML_2022'
-github_repo = course_id
 zip_file_url="https://github.com/%s/archive/main.zip"%course_id
 
 def get_last_modif_date(localdir):
