@@ -2,15 +2,11 @@
 
 ## ¿Qué es Machine Learning?  <br/>
 
-**Definiciones básicas y aplicaciones típicas**:  [pdf](https://drive.google.com/file/d/1k8XDXGFka_LWfty32M8BcOT7rFtbpRkS/view?usp=sharing) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
+**Definiciones básicas y aplicaciones típicas**:  [Clase_02.pdf](https://drive.google.com/file/d/1k8XDXGFka_LWfty32M8BcOT7rFtbpRkS/view?usp=sharing) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
-**Modelos controlados por datos**:   <br/>Se discuten los conceptos básicos de los modelos controaldos por datos que rigen a todos los modelos de ML.
+Se presentan los tipos de aprendizaje automático más comunes: supervisado, no supervisado, auto supervisado y por refuerzo, así como la nomenclatura matemática básica que se usa para representar los problemas supervisados y no supervisados.
 
-**Tipos de aprendizaje automático**:  <br/> Se presentan los tipos de aprendizaje automático más comunes: supervisado, no supervisado, auto supervisado y por refuerzo, así como la nomenclatura matemática básica que se usa para representar los problemas supervisados y no supervisados.
-
-**Aprendizaje supervisado: clasificación vs regresión**: <br/> Se explica la diferencia entre los problemas de aprendizaje supervisado conocidos como clasificación y regresión, así como sus formas de representación gráfica. 
-
-**Componentes de un modelo de ML**: <br/> Se explican los tres componentes básicos que deben considerarse cuando se selecciona un modelo de ML y los diferentes niveles de abstracción en los que se puede aproximar una solución.
+Se explica la diferencia entre los problemas de aprendizaje supervisado conocidos como clasificación y regresión, así como sus formas de representación gráfica. 
 
 
 ## Modelos básicos de aprendizaje  <br/>
