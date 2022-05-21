@@ -45,7 +45,7 @@ def test_ejercicio_1(func):
     nr = 100
     nc = 4
     xtrain1, x, _, _, _ ,_= genarete_data()
-    tests = {'Debes retornar el numero de muestras y columnas': func (x) == (nc,nr),
+    tests = {'Debes retornar el numero de muestras y columnas': func (x) == (nr,nc),
              'Recuerda que la funcion debe recibir la variable parametro':  func (xtrain1) == (3,100) }
     test_res = ut.test_conditions_and_methods(tests)
     return (test_res)
@@ -81,12 +81,12 @@ def test_ejercicio_3(func):
     ww1 = np.array([[0.5], [0.5], [0.5]])
     xx1 = np.array([[0,0], [1,1], [2,2]])
     yy1 = np.array([0,1,2])
-    e1 = func(ww1, xx1, yy1)
+    e1 = func(ww1, yy1, xx1)
 
     ww2 = np.array([[1.0], [0.0]])
     xx2 = np.array([[0], [1], [2]])
     yy2 = np.array([1,1,1])
-    e2 = func(ww2, xx2, yy2)
+    e2 = func(ww2, yy2, xx2)
 
     tests_dict =  {'revisar las operaciones':  np.allclose(e1, 0.25) and np.allclose(e2, 0.0)}
     test  =  ut.test_conditions_and_methods(tests_dict)
