@@ -116,7 +116,7 @@ def test_ejercicio_4(func):
 
 @unknow_error
 def test_ejercicio_5(func):
-    code_to_look = ['potenciaPolinomio', 'evaluar_modelo(W,X2']
+    code_to_look = ['potenciaPolinomio', 'evaluar_modelo(']
     code_check = ut.check_code(code_to_look, func, "usar solo numpy y funciones previamente definidas")
     ww1 = np.array([[1.0], [0.0]])
     xx1 = np.array([[0], [1], [2]])
