@@ -46,7 +46,7 @@ def test_ejercicio_1(func):
     nc = 4
     xtrain1, x, _, _, _ ,_= genarete_data()
     tests = {'Debes retornar el numero de muestras y columnas': func (x) == (nr,nc),
-             'Recuerda que la funcion debe recibir la variable parametro':  func (xtrain1) == (3,100) }
+             'Recuerda que la funcion debe recibir la variable parametro':  func (xtrain1) == (100, 3) }
     test_res = ut.test_conditions_and_methods(tests)
     return (test_res)
 
