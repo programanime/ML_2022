@@ -172,11 +172,9 @@ def part_1():
     x = db[:,0:12]
     y = db[:,12]
     return (GRADER_LAB_1_P1, db, x, y)
-
 #
 # parte 2
 #
-
 def genarete_data2():
     mat = scipy.io.loadmat('DatosClases.mat')
     x = mat['X'] # Matriz X de muestras con las características
@@ -190,12 +188,11 @@ def genarete_data2():
 
     return(xtrain, x, ytrain, y, wr1, wr2)
 
-
 @unknow_error
 def test_ejercicio_1_p2(func):
     xtrain, x, ytrain, y, _ ,_= genarete_data2()
     tests = {'Debes retornar el numero de muestras y columnas': func (x, y) == (2, 500, 2),
-             'Recuerda que la funcion debe recibir la variable  como parametro':  func (xtrain, ytrain) == (1,100,2) }
+             'Recuerda que la funcion debe recibir la variable  como parametro':  func (xtrain, ytrain) == (2,100,1) }
     test_res = ut.test_conditions_and_methods(tests)
     return (test_res)
 
@@ -219,7 +216,6 @@ def test_sigmoide(func):
              'revisa tu implementacion, recuerda evitar código estatico': t2}
     test_res = ut.test_conditions_and_methods(tests)
     return (test_res)
-
 
 @unknow_error
 def test_gradiente_descendente_logistic_poly(func):
@@ -263,12 +259,9 @@ def part_2():
     print("cargando librerias y variables al ambiente")
     GRADER = Grader("lab1_part2")
     GRADER.add_test("ejercicio1", Tester(test_ejercicio_1_p2))
-    GRADER.add_test("ejercicio2", Tester(test_ejercicio_2_p2))
-    GRADER.add_test("ejercicio3", Tester(test_sigmoide))
-    GRADER.add_test("ejercicio4", Tester(test_gradiente_descendente_logistic_poly))
-    GRADER.add_test("ejercicio5",  Tester(test_exp1_part2))
-    #GRADER.add_test("ejercicio6", Tester(test_exp1))
-    #GRADER.add_test("ejercicio7", Tester(test_exp2))
+    GRADER.add_test("ejercicio2", Tester(test_sigmoide))
+    GRADER.add_test("ejercicio3", Tester(test_gradiente_descendente_logistic_poly))
+    GRADER.add_test("ejercicio4",  Tester(test_exp1_part2))
     mat = scipy.io.loadmat('DatosClases.mat')
     x = mat['X'] # Matriz X de muestras con las características
     y = mat['Y'] # Variable de salida
