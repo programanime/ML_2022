@@ -2,7 +2,7 @@
 
 ## ¿Qué es Machine Learning?  <br/>
 
-**Definiciones básicas y aplicaciones típicas**:  [Clase_02.pdf](https://drive.google.com/file/d/1k8XDXGFka_LWfty32M8BcOT7rFtbpRkS/view?usp=sharing) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
+**Definiciones básicas y aplicaciones típicas**:  [Clase_02.pdf]("clases/clase_02_introduccion_ml.pdf") <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
 Se presentan los tipos de aprendizaje automático más comunes: supervisado, no supervisado, auto supervisado y por refuerzo, así como la nomenclatura matemática básica que se usa para representar los problemas supervisados y no supervisados.
 
