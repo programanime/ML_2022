@@ -11,7 +11,7 @@ Se explica la diferencia entre los problemas de aprendizaje supervisado conocido
 
 ## Modelos básicos de aprendizaje  <br/> 
 
-[Clase 03.pdf](https://github.com/mariabda2/ML_2022/blob/e96238f3d4bac71d814f14494c3c51334542bf6d/titles/Clase%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.ipynb)
+[Clase 03.pdf]()
 
 **Regresión múltiple**:  <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
