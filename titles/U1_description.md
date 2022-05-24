@@ -9,7 +9,7 @@ Se presentan los tipos de aprendizaje automático más comunes: supervisado, no 
 Se explica la diferencia entre los problemas de aprendizaje supervisado conocidos como clasificación y regresión, así como sus formas de representación gráfica. 
 
 
-## Modelos básicos de aprendizaje  <br/>
+## Modelos básicos de aprendizaje  <br/> [Clase 03.pdf](Clase 02 - Regresión lineal y regresión logística.ipynb)
 
 **Regresión múltiple**: <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
