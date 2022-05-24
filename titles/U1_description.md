@@ -9,9 +9,11 @@ Se presentan los tipos de aprendizaje automático más comunes: supervisado, no 
 Se explica la diferencia entre los problemas de aprendizaje supervisado conocidos como clasificación y regresión, así como sus formas de representación gráfica. 
 
 
-## Modelos básicos de aprendizaje  <br/> [Clase 03.pdf](https://github.com/jdariasl/ML_2020/blob/5ab6a9aedaec7836a8ddd2b0ab2484d44ab4602d/Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.ipynb)
+## Modelos básicos de aprendizaje  <br/> 
 
-**Regresión múltiple**: <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
+[Clase 03.pdf](https://github.com/mariabda2/ML_2022/blob/e96238f3d4bac71d814f14494c3c51334542bf6d/titles/Clase%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.ipynb)
+
+**Regresión múltiple**:  <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
 **Algoritmo de gradiente descendente**:  <br/> Se continúa con el análisis de la regresión múltiple desde perspectivas de mediano y bajo nivel, y para esta última se explica el funcionamiento del algoritmo de gradiente descendente.
 
