@@ -11,8 +11,6 @@ Se explica la diferencia entre los problemas de aprendizaje supervisado conocido
 
 ## Modelos básicos de aprendizaje  <br/> 
 
-[Clase 03.pdf]()
-
 **Regresión múltiple**:  <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
 **Algoritmo de gradiente descendente**:  <br/> Se continúa con el análisis de la regresión múltiple desde perspectivas de mediano y bajo nivel, y para esta última se explica el funcionamiento del algoritmo de gradiente descendente.
