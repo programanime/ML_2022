@@ -4,7 +4,7 @@ chapters:
 - file: "Labs/Intro/Intro"
 - file: titles/U1_description
   sections:
-    - file: "clases/clase_02_introduccion_ml.pdf"  
+    - file: "clases/clase_02_introduccion_ml"  
     - file: "clases/clase_03_y_04_regresion_lineal_regresion_logistica"  
     - file: "Labs/lab1/lab1_parte1"
     - file: "Labs/lab1/lab1_parte2"

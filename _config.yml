@@ -13,5 +13,7 @@ launch_buttons:
   colab_url: https://colab.research.google.com
 
 execute:
-  execute_notebooks         : off
+  execute_notebooks: off
+
+
 
