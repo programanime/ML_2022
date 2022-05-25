@@ -2,16 +2,16 @@
 
 ## ¿Qué es Machine Learning?  <br/>
 
-**Definiciones básicas y aplicaciones típicas**:  [Clase_02.pdf](https://drive.google.com/file/d/1k8XDXGFka_LWfty32M8BcOT7rFtbpRkS/view?usp=sharing) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
+**Definiciones básicas y aplicaciones típicas**:  [Clase_02.pdf](https://github.com/mariabda2/ML_2022/blob/d315b168af8d9a1b5759b3a37cedbbf80922e1c2/clases/clase_02_introduccion_ml.pdf) <br/>Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
 Se presentan los tipos de aprendizaje automático más comunes: supervisado, no supervisado, auto supervisado y por refuerzo, así como la nomenclatura matemática básica que se usa para representar los problemas supervisados y no supervisados.
 
 Se explica la diferencia entre los problemas de aprendizaje supervisado conocidos como clasificación y regresión, así como sus formas de representación gráfica. 
 
 
-## Modelos básicos de aprendizaje  <br/>
+## Modelos básicos de aprendizaje  <br/> 
 
-**Regresión múltiple**: <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
+**Regresión múltiple**:  <br/> Se repasa el modelo de regresión múltiple y de los tres componentes básicos del modelo de acuerdo con las ideas discutidas en la sesión anterior, desde una perspectiva de alto nivel.
 
 **Algoritmo de gradiente descendente**:  <br/> Se continúa con el análisis de la regresión múltiple desde perspectivas de mediano y bajo nivel, y para esta última se explica el funcionamiento del algoritmo de gradiente descendente.
 
