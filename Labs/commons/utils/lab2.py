@@ -184,9 +184,9 @@ def test_KNN_regresion(func):
                         [0.9900505 , 1.99002513, 0.01414214, 0.9900505 , 0.84480767],
                         [1.36014705, 2.10950231, 1.11803399, 0.2236068 , 0.26925824]])
     
-    lr1, dr1 =  func(2, np.ones((10,2)), np.random.choice(1,10), np.random.choice(1,6).reshape((3,2)))
-    r1 =  func(2,xtrains, ytrains, xtests)
-    r2 =  func(5,xtrains, ytrains, xtests)
+    lr1, dr1 =  func(k=2, Xtrain=np.ones((10,2)), Ytrain= np.random.choice(1,10), Xtest= np.random.choice(1,6).reshape((3,2)))
+    r1 =  func(k=2,Xtrain=xtrains, Ytrain = ytrains, Xtest = xtests)
+    r2 =  func(k=5,Xtrain=xtrains, Ytrain= ytrains, Xtest= xtests)
     t1 =  ut.are_np_equal(r1[1], dists) and ut.are_np_equal(r1[0], ytests_should1) 
     t2 =  ut.are_np_equal(r2[1], dists) and ut.are_np_equal(r2[0], ytests_should2) 
     tr1 = np.sum(dr1) != np.sum(r1[1]) and (dr1.shape == (3,10))
@@ -204,8 +204,8 @@ def test_knn_reg_exp(func):
     yy =  np.array([0.1,0.2,0.5,0.3,0.7, 0.65,0.9,0.9,0.9])
     ks = [2,3,5]    
     res = ut.test_experimento_oneset(func,  shape_val=(len(ks)*5, 3), 
-                                    col_error = ['error de prueba'],
-                                    col_val=['k-vecinos', 'error de prueba', 'particion'],
+                                    col_error = ['error en conjunto de prueba'],
+                                    col_val=['k-vecinos', 'error en conjunto de prueba', 'repeticion'],
                                     X = xx, Y=yy,
                                     ks = ks)
     code_to_look = ['KNN_regresion', "MAPE", ]
@@ -220,9 +220,12 @@ def test_KNN_regresion_parzen(func):
 
     ytests_should1 = np.array([0.1       , 0.25      , 0.9       , 0.76422025])
     ytests_should2 = np.array([0.5172058 , 0.51031574, 0.52463764, 0.52588794]) 
-    rr1 =  func(2, np.ones((10,2)), np.random.choice(1,10), np.random.choice(1,6).reshape((3,2)))
-    r1 =  func(0.1, xtrains, ytrains, xtests)
-    r2 =  func(5, xtrains, ytrains, xtests)
+    rr1 =  func(h=2, Xtrain=np.ones((10,2)), 
+                Ytrain= np.random.choice(1,10), 
+                Xtest= np.random.choice(1,6).reshape((3,2))
+                )
+    r1 =  func(h=0.1, Xtrain = xtrains, Ytrain = ytrains, Xtest =xtests)
+    r2 =  func(h=5, Xtrain = xtrains, Ytrain = ytrains, Xtest =xtests)
 
     t1 = ut.are_np_equal(r1, ytests_should1) 
     t2 = ut.are_np_equal(r2, ytests_should2) 
@@ -241,8 +244,8 @@ def test_knn_reg_exp_parzen(func):
     yy =  np.array([0.1,0.2,0.5,0.3,0.7, 0.65,0.9,0.9,0.9])
     hs = [1,2,3,5]    
     res = ut.test_experimento_oneset(func,  shape_val=(3*len(hs), 3), 
-                                    col_error = ['error de prueba'],
-                                    col_val=['ancho de ventana', 'error de prueba', 'particion'],
+                                    col_error = ['error en conjunto de prueba'],
+                                    col_val=['ancho de ventana', 'error en conjunto de prueba', 'particion'],
                                     X = xx, Y=yy,
                                     hs = hs)
     code_to_look = ['Nadaraya_Watson', "MAPE", "[train", "[test"]
@@ -256,9 +259,8 @@ def part_2 ():
     from sklearn.datasets import load_boston
     x, y = load_boston(return_X_y=True)
     GRADER = Grader("lab2_part2")
-    GRADER.add_test("ejercicio1", Tester(test_plot_hist_20))
-    GRADER.add_test("ejercicio2", Tester(test_KNN_regresion))
-    GRADER.add_test("ejercicio3", Tester(test_knn_reg_exp))
-    GRADER.add_test("ejercicio4", Tester(test_KNN_regresion_parzen))
-    GRADER.add_test("ejercicio5", Tester(test_knn_reg_exp_parzen))
+    GRADER.add_test("ejercicio1", Tester(test_KNN_regresion))
+    GRADER.add_test("ejercicio2", Tester(test_knn_reg_exp))
+    GRADER.add_test("ejercicio3", Tester(test_KNN_regresion_parzen))
+    GRADER.add_test("ejercicio4", Tester(test_knn_reg_exp_parzen))
     return(GRADER, x,y)
