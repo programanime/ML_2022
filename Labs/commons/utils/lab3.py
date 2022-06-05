@@ -14,7 +14,7 @@ from imports import *
 from sklearn.datasets import load_digits
 from sklearn.decomposition import PCA
 import seaborn as sns
-from sklearn.model_selection import KFold, ShuffleSplit, StratifiedKFold
+from sklearn.model_selection import KFold, ShuffleSplit, StratifiedKFold, LeaveOneOut
 from sklearn.mixture import GaussianMixture
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
@@ -23,42 +23,62 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
 
 
-def plot_digits(data):
-    fig, ax = plt.subplots(10, 10, figsize=(8, 8),
+def plot_digits(data, size= (10, 10), figsize = (8, 8)):
+    fig, ax = plt.subplots(size[0], size[1], figsize=figsize,
                            subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(hspace=0.05, wspace=0.05)
     for i, axi in enumerate(ax.flat):
         im = axi.imshow(data[i].reshape(8, 8), cmap='binary')
         im.set_clim(0, 16)
 
+def plot_digit(data):
+    fig, ax = plt.subplots(1, 1, figsize=(3,3),
+                           subplot_kw=dict(xticks=[], yticks=[]))
+
+    im = ax.imshow(data.reshape(8, 8), cmap='binary')
+    im.set_clim(0, 16)
+
+def plot_digit_plano(data, y, numero_digitos):
+    data_to_plot = pd.DataFrame(data[0:numero_digitos, 0:2], columns=['Variable reducida # 1', 'Variable reducida # 2'])
+    data_to_plot['clase'] = y[0:numero_digitos]
+    g = sns.relplot(data = data_to_plot, x = 'Variable reducida # 1', 
+                    y='Variable reducida # 2', 
+                    hue= 'clase', style= 'clase',
+                    s = 400, height = 4)
+    g.fig.suptitle("Muestras representadas en plano")
+
 
 @unknow_error
 def test_get_muestras_by_cv(func):
 
     Y = np.random.choice(3,100)
-    cv1 = func(1,np.ones((100,2)),Y)
-    cv2= func(2, np.ones((100,2)),Y)  
-    met = cv2['numero de muestras entrenamiento'].mean() <= cv1['numero de muestras entrenamiento'].mean()
+    cv1 = func(metodo = 1, X=np.ones((100,2)),Y=Y)
+    cv2= func(metodo = 2, X=np.ones((100,2)),Y=Y) 
+    cv3= func(metodo = 3, X=np.ones((100,2)),Y=Y)  
+
+    met_1 = cv2['numero de muestras entrenamiento'].mean() <= cv1['numero de muestras entrenamiento'].mean()
+
+    met_2 = cv2['numero de muestras entrenamiento'].mean() <= cv3['numero de muestras entrenamiento'].mean()
+
+    met_3 = cv3['numero de muestras entrenamiento'].mean() == 33
+
     tests = {'recuerda dividir en 3 folds': (cv1.shape[0] == len(np.unique(Y))*3 ) and (cv2.shape[0] == len(np.unique(Y))*3) ,
-             'recuerda que metodo corresponde a la metodologia de validacion': met
+             'recuerda que metodo corresponde a la metodologia de validacion': met_1 and met_2 and met_3
              }
+
     test_res = ut.test_conditions_and_methods(tests)
-    code_to_look = ['ShuffleSplit', 'StratifiedKFold']
+    code_to_look = ['ShuffleSplit', 'StratifiedKFold', 'LeaveOneOut', "split(X=X,y=Y)", "split(X=X)"]
     res2 = ut.check_code(code_to_look, func)
-    res = ut.test_experimento_oneset(func,  shape_val=(len(np.unique(Y))*3, 3), 
-                                    col_error = ['etiqueta de clase'],
-                                    col_val=['etiqueta de clase', 'folds', 'numero de muestras entrenamiento'],
-                                    X = np.ones((100,2)), Y=Y,
-                                    method = 1)
-    return (res and test_res and res)
+
+    return (res2 and test_res)
 
 @unknow_error
 def test_GMMClassifierTrain(func):
     y1 = np.random.choice(3,20)
-    g1 = func(2, 'full', np.random.rand(20,2), y1)
-    g2 = func( 2, 'diag', np.random.rand(20,2), np.random.choice(3,20),)
-    g3 = func( 2, 'tied', np.random.rand(20,2), np.random.choice(3,20))
-    g4 = func(2, 'spherical',np.random.rand(10,2), np.random.choice(2,10))
+    g1 = func(M=2, tipo= 'full', X=np.random.rand(20,2), Y = y1)
+    g2 = func(M=2,  tipo= 'full', X=np.random.rand(20,2), Y = np.random.choice(3,20),)
+    g3 = func(M= 2,  tipo= 'full', X=np.random.rand(20,2), Y = np.random.choice(3,20))
+    g4 = func(M=2, tipo=  'spherical',X= np.random.rand(10,2), Y= np.random.choice(2,10))
     t1 =  len(np.array([np.mean(m.means_) for m in g1.values()])) == len(np.unique([np.mean(m.means_) for m in g1.values()]))
 
     code_to_look = ['n_components=', 'covariance_type=']
@@ -80,8 +100,8 @@ def test_GMMClassfierVal(func):
             1: GaussianMixture().fit(xx[yy==1])}
     gmms2 = {0: GaussianMixture().fit(xx2)}
 
-    yy_res, probs = func(gmms, xx)
-    _, probs2 = func(gmms2, xx2)
+    yy_res, probs = func(GMMs = gmms, Xtest = xx)
+    _, probs2 = func(GMMs = gmms2, Xtest = xx2)
 
     tests = {'debes retornar las probabilidades por cada clase': len(np.unique(probs.sum(axis =1))) == len(probs.sum(axis =1)),
              'la salida debe la etiqueta de las clases predichas':  (np.unique(yy_res) == np.unique(yy)).all(),
