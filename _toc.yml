@@ -6,6 +6,7 @@ chapters:
   sections: 
     - file: "clases/clase_03_y_04_regresion_lineal_regresion_logistica"  
     - file: "clases/clase_05_Funciones_discriminantes_Gausianas"  
+    - file: "clases/clase_06_modelos_no_parametricos" 
     - file: "Labs/lab1/lab1_parte1"
     - file: "Labs/lab1/lab1_parte2"
 - file: titles/U2_description
