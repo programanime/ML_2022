@@ -109,11 +109,12 @@ class Grader():
         print("resgister open exercises")
         # add a blank cell after each answer
         idx = 1
+        to_correct_spanish = lambda s : bytes(s, 'latin-1').decode("unicode_escape")
         for nn, o_ans in enumerate (open_asnwers):
             if nn == 0:
-                ans_list[n+nn+1].value = o_ans.decode("unicode_escape") if o_ans.strip() !='' else 'no respuesta'
+                ans_list[n+nn+1].value = to_correct_spanish(o_ans) if o_ans.strip() !='' else 'no respuesta'
             else:
-                ans_list[n+nn+1+idx].value = o_ans.decode("unicode_escape") if o_ans.strip() !='' else 'no respuesta'
+                ans_list[n+nn+1+idx].value = to_correct_spanish(o_ans) if o_ans.strip() !='' else 'no respuesta'
                 idx = idx+1
 
         worksheet.update_cells(ans_list)
