@@ -111,9 +111,9 @@ class Grader():
         idx = 1
         for nn, o_ans in enumerate (open_asnwers):
             if nn == 0:
-                ans_list[n+nn+1].value = o_ans if o_ans.strip() !='' else 'no respuesta'
+                ans_list[n+nn+1].value = o_ans.decode("unicode_escape") if o_ans.strip() !='' else 'no respuesta'
             else:
-                ans_list[n+nn+1+idx].value = o_ans if o_ans.strip() !='' else 'no respuesta'
+                ans_list[n+nn+1+idx].value = o_ans.decode("unicode_escape") if o_ans.strip() !='' else 'no respuesta'
                 idx = idx+1
 
         worksheet.update_cells(ans_list)
