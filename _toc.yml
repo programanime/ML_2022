@@ -18,8 +18,6 @@ chapters:
     - file: "clases/clase_07_metricas_de_error" 
     - file: "clases/clase_08_complejidad_modelos_sobreajuste" 
     - file: "clases/clase_09_regularizacion" 
-    - file: "Labs/lab2/lab2_parte1"
-    - file: "Labs/lab2/lab2_parte2"
 - file: titles/U4_description
   sections:
     - file: "Labs/lab3/lab3_parte1"
