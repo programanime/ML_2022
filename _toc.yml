@@ -12,6 +12,7 @@ chapters:
   sections:
     - file: "clases/clase_06_modelos_no_parametricos" 
     - file: "clases/clase_07_metricas_de_error" 
+    - file: "clases/clase_08_complejidad_modelos_sobreajuste" 
     - file: "Labs/lab2/lab2_parte1"
     - file: "Labs/lab2/lab2_parte2"
 - file: titles/U4_description
