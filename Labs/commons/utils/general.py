@@ -86,7 +86,7 @@ class Grader():
               "¡buen trabajo!")
     
     def to_correct_spanish (self, s):
-        print_str
+        print_str=""
         try: 
             print_str = bytes(s, 'latin-1').decode("unicode_escape")
 
