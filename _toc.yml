@@ -4,14 +4,20 @@ chapters:
 - file: "Labs/Intro/Intro"
 - file: titles/U1_description
   sections: 
+    - file: "clases/clase_03_y_04_regresion_lineal_regresion_logistica"
+    - file: "clases/clase_05_Funciones_discriminantes_Gausianas"  
     - file: "Labs/lab1/lab1_parte1"
     - file: "Labs/lab1/lab1_parte2"
 - file: titles/U2_description
   sections:
+    - file: "clases/clase_06_modelos_no_parametricos"
+    - file: "clases/clase_07_metricas_de_error"
     - file: "Labs/lab2/lab2_parte1"
     - file: "Labs/lab2/lab2_parte2"
 - file: titles/U3_description
   sections:
+    - file: "clases/clase_08_complejidad_modelos_sobreajuste"
+    - file: "clases/clase_09_regularizacion"
 - file: titles/U4_description
   sections:
     - file: "clases/clase_10_modelos_mezclas_Gausianas" 
