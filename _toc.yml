@@ -5,7 +5,7 @@ chapters:
 - file: titles/U1_description
   sections: 
     - file: "clases/clase_03_y_04_regresion_lineal_regresion_logistica"
-    - file: "clases/clase_05_Funciones_discriminantes_Gausianas"  
+    - file: "clases/clase_05_Funciones_discriminantes_Gausianas"
     - file: "Labs/lab1/lab1_parte1"
     - file: "Labs/lab1/lab1_parte2"
 - file: titles/U2_description
@@ -20,17 +20,17 @@ chapters:
     - file: "clases/clase_09_regularizacion"
 - file: titles/U4_description
   sections:
-    - file: "clases/clase_10_modelos_mezclas_Gausianas" 
-    - file: "clases/clase_11_Unsupervised_Learning" 
+    - file: "clases/clase_10_modelos_mezclas_Gausianas"
+    - file: "clases/clase_11_Unsupervised_Learning"
     - file: "Labs/lab3/lab3_parte1"
 - file: titles/U5_description
   sections:
-    - file: "clases/clase_12_arboles de Decision_Voting_Bagging_Random_Forest" 
-    - file: "clases/clase_13_Boosting_Stacking" 
+    - file: "clases/clase_12_arboles de Decision_Voting_Bagging_Random_Forest"
+    - file: "clases/clase_13_Boosting_Stacking"
     - file: "Labs/lab3/lab3_parte2"
 - file: titles/U6_description
   sections:
-    - file: "clases/clase_14_Redes_Neuronales_Artificiales" 
+    - file: "clases/clase_14_Redes_Neuronales_Artificiales"
     - file: "Labs/lab4/lab4_parte1"
     - file: "Labs/lab4/lab4_parte2"
 - file: titles/U7_description
