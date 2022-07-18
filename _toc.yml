@@ -21,16 +21,16 @@ chapters:
 - file: titles/U4_description
   sections:
     - file: "clases/clase_10_modelos_mezclas_Gausianas" 
-    - file: "clases/clase_11_Unsupervised Learning" 
+    - file: "clases/clase_11_Unsupervised_Learning" 
     - file: "Labs/lab3/lab3_parte1"
 - file: titles/U5_description
   sections:
-    - file: "clases/clase_12_arboles de Decision_Voting_Bagging_Random Forest" 
-    - file: "clases/clase_13_Boosting, Stacking" 
+    - file: "clases/clase_12_arboles de Decision_Voting_Bagging_Random_Forest" 
+    - file: "clases/clase_13_Boosting_Stacking" 
     - file: "Labs/lab3/lab3_parte2"
 - file: titles/U6_description
   sections:
-    - file: "clases/clase_14_Redes Neuronales Artificiales" 
+    - file: "clases/clase_14_Redes_Neuronales_Artificiales" 
     - file: "Labs/lab4/lab4_parte1"
     - file: "Labs/lab4/lab4_parte2"
 - file: titles/U7_description
