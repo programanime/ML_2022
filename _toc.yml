@@ -19,7 +19,7 @@ chapters:
     - file: "Labs/lab3/lab3_parte1"
 - file: titles/U5_description
   sections:
-    - file: "clases/clase_12_Árboles de Decisión, Voting, Bagging, Random Forest" 
+    - file: "clases/clase_12_arboles de Decision_Voting_Bagging_Random Forest" 
     - file: "clases/clase_13_Boosting, Stacking" 
     - file: "Labs/lab3/lab3_parte2"
 - file: titles/U6_description
