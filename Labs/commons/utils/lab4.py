@@ -21,6 +21,7 @@ from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.datasets import load_digits, load_iris, load_wine
 from sklearn.linear_model import LogisticRegression
 from sklearn.decomposition import PCA
+import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -83,7 +84,7 @@ def test_experimetar_mlp(func):
 def test_output_activation_MPC(func):
     act = func()
     tests = {'explorar de mejor manera la libreria': act[0:2] == 'lo'}
-    code_to_look = ['.out_activation_']
+    code_to_look = ['.out_activation_', 'X=', 'y=']
     res2 = ut.check_code(code_to_look, func, "explorar de mejor manera la libreria")
     return (ut.test_conditions_and_methods(tests) and res2)
 
@@ -108,19 +109,18 @@ def test_experimetar_mlpc(func):
                                     num_neurons= neu)
     code_to_look = [['MLPClassifier', 'hidden_layer_sizes=', 'activation=', "'tanh'",  
                     'max_iter=350' , ".fit", ".predict(Xtest)", "X=Xtrain,",  
-                     'accuracy_score', "hidden_layers*[neurons]"],
+                     'accuracy_score', "hidden_layers*[neurons]", "split(X=X"],
                      ['MLPClassifier', 'hidden_layer_sizes=', 'activation=', '"tanh"',  
                     'max_iter=350' , ".fit", ".predict(Xtest)", "X=Xtrain,",  
-                     'accuracy_score', "hidden_layers*[neurons]"]] 
+                     'accuracy_score', "hidden_layers*[neurons]", "split(X=X"]] 
     res2 = ut.check_code(code_to_look, func)
     return (res and res2)
 
 def part_1 ():
     GRADER = Grader("lab4_part1", num_questions = 4)
-    GRADER.add_test("ejercicio1", Tester(test_output_activation))
-    GRADER.add_test("ejercicio2", Tester(test_experimetar_mlp))
-    GRADER.add_test("ejercicio3", Tester(test_output_activation_MPC))
-    GRADER.add_test("ejercicio4", Tester(test_experimetar_mlpc))
+    GRADER.add_test("ejercicio1", Tester(test_experimetar_mlp))
+    GRADER.add_test("ejercicio2", Tester(test_output_activation_MPC))
+    GRADER.add_test("ejercicio3", Tester(test_experimetar_mlpc))
     return(GRADER)
 
 def generate_data2():
