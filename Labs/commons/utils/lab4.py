@@ -14,7 +14,7 @@ Este archivo es generado automaticamente.
 from imports import *
 from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import ShuffleSplit
-from sklearn.metrics import mean_absolute_error, accuracy_score, mean_absolute_percentage_error,classification_report
+from sklearn.metrics import mean_absolute_error, accuracy_score, mean_absolute_percentage_error,classification_report,balanced_accuracy_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import StratifiedKFold, train_test_split
@@ -137,13 +137,18 @@ def test_diff_train_test(func):
     xx, yy, xxt, yyt = generate_data2()
     m = MLPClassifier(hidden_layer_sizes=[20,20], max_iter=500, alpha =1e-6, random_state=1)
     m.fit(xx, yy)
-    res = func(xx,yy, xxt, yyt, m)
-    res_ran = func(np.random.randn(30,3),np.random.choice(3,30), xxt, yyt, m)
+    res = func(Xtrain=xx,Ytrain=yy, Xtest=xxt, Ytest=yyt, sklearnModel=m)
+    res_ran = func(
+        Xtrain = np.random.randn(30,3),
+        Ytrain = np.random.choice([1,2],30), 
+        Xtest= np.random.randn(30,3), 
+        Ytest= np.random.choice([1,2],30), 
+        sklearnModel=m)
 
     tests = {'no estas retornado lo requerido': res == (1.0, 0.5, 0.5),
              'evitar dejar código estatico': res_ran != res}
 
-    code_to_look = ['accuracy_score', 'predict(Xtrain', 'predict(Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
+    code_to_look = ['balanced_accuracy_score', 'y_true=Ytrain',  'y_true=Ytest', 'predict(Xtrain', 'predict(Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
     res2 = ut.check_code(code_to_look, func, "recordar usar los metodos, errores sugeridos y llamar explicitamente los parametros de sklearn")
 
     return (ut.test_conditions_and_methods(tests) and res2)
