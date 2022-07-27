@@ -1,5 +1,5 @@
 course_id = 'EACD-04-MACHINE-LEARNING-1'
-github_repo = 'UDEA-Esp-Analitica-y-Ciencia-de-Datos/%s'%course_id
+github_repo = 'mariabda2/ML_2022/%s'%course_id
 zip_file_url="https://github.com/%s/archive/master.zip"%github_repo
 
 
