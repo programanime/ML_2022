@@ -317,7 +317,7 @@ def test_time_rf_gbt_training(func):
                                     numero_de_variables = num_vars, 
                                     metodo = 'rf')
     code_to_look = ['RandomForestClassifier', 'n_estimators=', "max_features=", 
-    "time.process_time()",  ".fit", "GradientBoostingClassifier", "X=Xtrain,y=Ytrain",]
+    "time.process_time()",  ".fit", "GradientBoostingClassifier", "X=X", "y=Y"]
     res2 = ut.check_code(code_to_look, func)
     return (res and res2)
 
