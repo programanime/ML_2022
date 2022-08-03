@@ -1,6 +1,6 @@
 course_id = 'ML_2022'
-github_repo = 'mariabda2%s'%course_id
-zip_file_url="https://github.com/%s/archive/master.zip"%github_repo
+github_repo = 'mariabda2/%s'%course_id
+zip_file_url="https://github.com/%s/archive/main.zip"%github_repo
 
 
 def get_last_modif_date(localdir):
