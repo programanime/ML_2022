@@ -31,6 +31,7 @@ chapters:
 - file: titles/U6_description
   sections:
     - file: "clases/clase_14_Redes_Neuronales_Artificiales"
+    - file: "clases/clase_15_Mapas Auto-Organizables"
     - file: "Labs/lab4/lab4_parte1"
     - file: "Labs/lab4/lab4_parte2"
 - file: titles/U7_description
