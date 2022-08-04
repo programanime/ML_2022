@@ -148,7 +148,7 @@ def test_diff_train_test(func):
     tests = {'no estas retornado lo requerido': res == (1.0, 0.5, 0.5),
              'evitar dejar código estatico': res_ran != res}
 
-    code_to_look = ['balanced_accuracy_score', 'y_true=Ytrain',  'y_true=Ytest', 'predict(X=Xtrain', 'predict(Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
+    code_to_look = ['balanced_accuracy_score', 'y_true=Ytrain',  'y_true=Ytest', 'predict(X=Xtrain', 'predict(X=Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
     res2 = ut.check_code(code_to_look, func, "recordar usar los metodos, errores sugeridos y llamar explicitamente los parametros de sklearn")
 
     return (ut.test_conditions_and_methods(tests) and res2)
