@@ -68,7 +68,7 @@ def test_experimetar_mlp(func):
                                     num_hidden_layers = capas,
                                     num_neurons= neu)
     code_to_look = [['MLPRegressor', 'hidden_layer_sizes=', 'activation=', "'tanh'",  
-                    'max_iter=300' , ".fit", ".predict(Xtest)", "X=Xtrain,", 
+                    'max_iter=300' , ".fit", ".predict(X=Xtest)", "X=Xtrain,", 
                     "hidden_layers*[neurons]", "mean_absolute_percentage_error", 'multioutput=',
                     "np.mean(ErrorY1)", "np.mean(ErrorY2)", "y_true=", "y_pred"],
                     ['MLPRegressor', 'hidden_layer_sizes=', 'activation=', '"tanh"',  
