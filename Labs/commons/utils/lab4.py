@@ -68,11 +68,11 @@ def test_experimetar_mlp(func):
                                     num_hidden_layers = capas,
                                     num_neurons= neu)
     code_to_look = [['MLPRegressor', 'hidden_layer_sizes=', 'activation=', "'tanh'",  
-                    'max_iter=300' , ".fit", ".predict(Xtest)", "X=Xtrain,", 
+                    'max_iter=300' , ".fit", ".predict(X=Xtest)", "X=Xtrain,", 
                     "hidden_layers*[neurons]", "mean_absolute_percentage_error", 'multioutput=',
                     "np.mean(ErrorY1)", "np.mean(ErrorY2)", "y_true=", "y_pred"],
                     ['MLPRegressor', 'hidden_layer_sizes=', 'activation=', '"tanh"',  
-                    'max_iter=300' , ".fit", ".predict(Xtest)", "X=Xtrain,", 
+                    'max_iter=300' , ".fit", ".predict(X=Xtest)", "X=Xtrain,", 
                     "hidden_layers*[neurons]", "mean_absolute_percentage_error", 'multioutput=',
                     "y_true=", "y_pred",
                     "np.mean(ErrorY1)", "np.mean(ErrorY2)"]]
@@ -108,10 +108,10 @@ def test_experimetar_mlpc(func):
                                     num_hidden_layers = capas,
                                     num_neurons= neu)
     code_to_look = [['MLPClassifier', 'hidden_layer_sizes=', 'activation=', "'tanh'",  
-                    'max_iter=350' , ".fit", ".predict(Xtest)", "X=Xtrain,",  
+                    'max_iter=350' , ".fit", ".predict(X=Xtest)", "X=Xtrain,",  
                      'accuracy_score', "hidden_layers*[neurons]", "split(X=X"],
                      ['MLPClassifier', 'hidden_layer_sizes=', 'activation=', '"tanh"',  
-                    'max_iter=350' , ".fit", ".predict(Xtest)", "X=Xtrain,",  
+                    'max_iter=350' , ".fit", ".predict(X=Xtest)", "X=Xtrain,",  
                      'accuracy_score', "hidden_layers*[neurons]", "split(X=X"]] 
     res2 = ut.check_code(code_to_look, func)
     return (res and res2)
@@ -148,7 +148,7 @@ def test_diff_train_test(func):
     tests = {'no estas retornado lo requerido': res == (1.0, 0.5, 0.5),
              'evitar dejar código estatico': res_ran != res}
 
-    code_to_look = ['balanced_accuracy_score', 'y_true=Ytrain',  'y_true=Ytest', 'predict(Xtrain', 'predict(Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
+    code_to_look = ['balanced_accuracy_score', 'y_true=Ytrain',  'y_true=Ytest', 'predict(X=Xtrain', 'predict(X=Xtest)', "y_true=Ytrain", "y_true=Ytest", 'abs']
     res2 = ut.check_code(code_to_look, func, "recordar usar los metodos, errores sugeridos y llamar explicitamente los parametros de sklearn")
 
     return (ut.test_conditions_and_methods(tests) and res2)
