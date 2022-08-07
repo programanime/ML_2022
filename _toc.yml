@@ -32,6 +32,7 @@ chapters:
   sections:
     - file: "clases/clase_14_Redes_Neuronales_Artificiales"
     - file: "clases/clase_15_Mapas Auto-Organizables"
+    - file: "clases/clase_16_Redes_Neuronales_Recurrentes"
     - file: "Labs/lab4/lab4_parte1"
     - file: "Labs/lab4/lab4_parte2"
 - file: titles/U7_description
