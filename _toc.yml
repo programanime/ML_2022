@@ -37,6 +37,7 @@ chapters:
     - file: "Labs/lab4/lab4_parte2"
 - file: titles/U7_description
   sections:
+    - file: "clases/clase_17_Maquinas_Vectores_Soporte"
     - file: "Labs/lab5/lab5_parte1"
     - file: "Labs/lab5/lab5_parte2"
 - file: titles/U8_description
