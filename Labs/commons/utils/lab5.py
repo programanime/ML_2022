@@ -71,7 +71,7 @@ def test_many_to_one_custom(func):
 @unknow_error
 def test_experimentar_rnn(func):
     xx, _ = generate_data(False)
-    xx = pd.DataFrame(data = {'values': xx[:, 0]}, index = range(len(xx[:, 0])))
+    xx = pd.DataFrame(data = {'T (degC)': xx[:, 0]}, index = range(len(xx[:, 0])))
     looksbacks = [1,2]
     neu = [1,2]
     cols =['lags', 'neuronas por capa', 
@@ -81,12 +81,11 @@ def test_experimentar_rnn(func):
     cols_errs = ['Métrica rendimiento en entrenamiento', 'Métrica de rendimiento prueba']
 
     code_to_look = ['MAX_EPOCHS=25',
-                    'fit(x=window.train'
-                    'predict(x=window.train', 
-                    'predict(x=window.test', 
+                    'fit(x=window.train',
+                    '.predict(x=window.train', 
+                    '.predict(x=window.test', 
                     'create_rnn_model',
                     'many_to_one_custom',
-                    '.predict(testX)' ,  
                     "mean_absolute_error", 
                     "y_pred=testYPred",
                     'y_pred=trainYPred'] 
@@ -96,7 +95,7 @@ def test_experimentar_rnn(func):
     res = ut.test_experimento_oneset(func,  shape_val=(len(looksbacks)*len(neu), len(cols)), 
                                     col_error = cols_errs,
                                     col_val=cols,
-                                    data = xx.values,
+                                    data = xx,
                                     look_backs = looksbacks,
                                     hidden_neurons= neu)
     return (res and res2)
@@ -105,7 +104,7 @@ def test_experimentar_rnn(func):
 @unknow_error
 def test_experimentar_LSTM(func):
     xx, _ = generate_data(False)
-    xx = pd.DataFrame(data = {'values': xx[:, 0]}, index = range(len(xx[:, 0])))
+    xx = pd.DataFrame(data = {'T (degC)': xx[:, 0]}, index = range(len(xx[:, 0])))
     looksbacks = [1,2]
     neu = [1,2]
     cols =['lags', 'neuronas por capa', 
@@ -113,24 +112,21 @@ def test_experimentar_LSTM(func):
           'Métrica de rendimiento prueba']
 
     cols_errs = ['Métrica rendimiento en entrenamiento', 'Métrica de rendimiento prueba']
-
     code_to_look = ['MAX_EPOCHS=40',
-                    'fit(x=window.train'
-                    'predict(x=window.train', 
-                    'predict(x=window.test', 
+                    'fit(x=window.train',
+                    '.predict(x=window.train', 
+                    '.predict(x=window.test', 
                     'create_lstm_model',
                     'many_to_one_custom',
-                    '.predict(testX)' ,  
                     "mean_absolute_error", 
-                    "y_pred=testYPred",
-                    'y_pred=trainYPred'] 
+                    "y_pred=testYPred"]
 
     res2 = ut.check_code(code_to_look, func, msg = "**** recordar usar las funciones sugeridas ***", debug = False)
 
     res = ut.test_experimento_oneset(func,  shape_val=(len(looksbacks)*len(neu), len(cols)), 
                                     col_error = cols_errs,
                                     col_val=cols,
-                                    data = xx.values,
+                                    data = xx,
                                     look_backs = looksbacks,
                                     hidden_neurons= neu)
     return (res and res2)
