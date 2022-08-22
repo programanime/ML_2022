@@ -96,7 +96,6 @@ class Grader():
         
         return (print_str)
 
-    UnicodeEncodeError
 
     def grade(self, worksheet = None, int_range = None, students = None,  open_asnwers = None):
         
