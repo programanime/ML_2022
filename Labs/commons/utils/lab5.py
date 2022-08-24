@@ -143,7 +143,7 @@ def part_1 ():
     return(GRADER)
 
 
-def predict_svr(x_train, y_train, x_test, kernel, gamma, param_reg):
+def predict_svr(x_train, y_train, x_test,y_test, kernel, gamma, param_reg):
     params = {'kernel': kernel, 'gamma': gamma, 'C': param_reg}
     scaler = StandardScaler()
     X_train = scaler.fit_transform(x_train)
@@ -151,6 +151,8 @@ def predict_svr(x_train, y_train, x_test, kernel, gamma, param_reg):
     print("*** calculando predicciones ***")
     md = SVR(**params).fit(X_train,y_train)
     ypred= md.predict(x_test)
+    error = mean_absolute_percentage_error(y_true = y_test, y_pred = ypred)
+    print("metrica", error)
     return(ypred)
 
 
@@ -164,9 +166,9 @@ def test_clean_data(func):
     db_df = pd.DataFrame(db, columns = [f'col_{c}' for c in range (1,14)])
     xx, yy = func(db_df)
     tests = {'No se están removiendo valores faltantes en variable de respuesta': yy.shape[0] == db.shape[0] - 1,
-             'no se estan imputando los valores': ut.are_np_equal(np.round(np.mean(xx, axis = 0)), np.round(xx[-1])),
-             'no se estan removiendo todos los valores faltantes': not((xx==-200).any()),
-             'cuidado estas retornando diferentes shapes de X. Leer las instrucciones.': xx.shape[1] == 12
+             'No se estan imputando los valores': ut.are_np_equal(np.round(np.median(xx, axis = 0)), np.round(xx[-1])),
+             'NO se estan removiendo todos los valores faltantes': not((xx==-200).any()),
+             'Cuidado estas retornando diferentes shapes de X. Leer las instrucciones.': xx.shape[1] == 12
              }
 
     test_res = ut.test_conditions_and_methods(tests)
@@ -180,10 +182,15 @@ def experiementarSVR(func):
     ks = ['linear','rbf']
     gs = [1.0, 0.1]
     cs = [100]
-    cols= ['kernel', 'gamma', 'param_reg', 'error de prueba (promedio)',
-       'error de prueba (intervalo de confianza)', '# de vectores de soporte', '% de vectores de soporte']
+    cols= ['kernel', 
+        'gamma', 
+        'param_reg', 
+        'Métrica de de rendimiento',
+       'Desviación estandar en métrica de de rendimiento', 
+       '# de vectores de soporte', 
+       '% de vectores de soporte']
 
-    cols_errs =['error de prueba (promedio)', 'error de prueba (intervalo de confianza)']
+    cols_errs =['Métrica de de rendimiento', 'Desviación estandar en métrica de de rendimiento']
 
     res, df_r = ut.test_experimento_oneset(func,  
                                     shape_val=(len(ks)*len(gs)*len(cs), len(cols)), 
@@ -198,7 +205,7 @@ def experiementarSVR(func):
 
     code_to_look = ['KFold', 'kernel=kernel', 'gamma=gamma', 'C=param_reg', 'SVR',
                     'StandardScaler()', '.fit(X=X_train', 
-                    '.predict(X=X_test', "n_splits=4",
+                    '.predict(X=X_test', "n_splits=5",
                     '.support_', 'mean_absolute_percentage_error'] 
     res2 = ut.check_code(code_to_look, func, debug = False)
 
@@ -211,7 +218,7 @@ def experiementarSVR(func):
         print("*** recordar retornar el porcentaje de vectores de soporte ***")
         return (False)
 
-    if ( (df_r['error de prueba (intervalo de confianza)'] == df_r['error de prueba (promedio)']).all()):
+    if ( (df_r[cols_errs[0]] == df_r[cols_errs[1]]).all()):
         print("*** recordar retornar el intervalo de confianza ***")
         return (False)
 
@@ -224,11 +231,15 @@ def experiementarSVC(func):
     ks = ['linear','rbf']
     gs = [1.0, 0.1]
     cs = [100]
-    cols= ['kernel', 'gamma', 'param_reg', 'estrategia', 
-          'error de entrenamiento',
-          'error de prueba', '% de vectores de soporte']
+    cols= ['kernel', 
+           'gamma', 
+           'param_reg', 
+           'estrategia', 
+          'Métrica de de rendimiento entrenamiento',
+          'Métrica de de rendimiento prueba',
+          '% de vectores de soporte']
     
-    cols_errs =['error de prueba', 'error de entrenamiento']
+    cols_errs =['Métrica de de rendimiento entrenamiento', 'Métrica de de rendimiento prueba',]
 
     res, df_r = ut.test_experimento_oneset(func,  
                                     shape_val=(len(ks)*len(gs)*len(cs), len(cols)), 
