@@ -112,7 +112,7 @@ def test_experimentar_LSTM(func):
           'Métrica de rendimiento prueba']
 
     cols_errs = ['Métrica rendimiento en entrenamiento', 'Métrica de rendimiento prueba']
-    code_to_look = ['MAX_EPOCHS=40',
+    code_to_look = ['MAX_EPOCHS=50',
                     'fit(x=window.train',
                     '.predict(x=window.train', 
                     '.predict(x=window.test', 
