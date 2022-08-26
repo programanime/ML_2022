@@ -46,16 +46,17 @@ def test_create_rnn_model (func):
 
 @unknow_error
 def test_many_to_one_custom(func):
+    print("este es el test de dorian y dani")
     data1 = pd.DataFrame(data = {'T (degC)': {0: 112, 1: 118, 2: 132, 3: 129, 4: 121, 5: 135}})
     data2 = pd.DataFrame(data = {'T (degC)': {0: 100, 1: 101, 2: 102, 3: 103, 4: 104, 5: 105, 6:106}})
     w1 = func (data1, 2)
     w2 = func (data2, 4)
 
-    for entradas, salidas in w1.train.take(1):
+    for entradas, salidas in w1.train_df.take(1):
         t1 =  entradas.shape == (2, 2, 1)
         t2 =  salidas.shape == (2, 1, 1)
     
-    for entradas, salidas in w2.train.take(1):
+    for entradas, salidas in w2.train_df.take(1):
         t3 =  entradas.shape == (1, 4, 1)
         t4 =  salidas.shape == (1, 1, 1)
     
